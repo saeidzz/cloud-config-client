@@ -17,11 +17,14 @@ public class RateController {
 
     @Value("${rate}")
     String rate;
+    @Value("${connstring}")
+    String conn;
 
     @GetMapping(value = "/getRate")
     public ResponseEntity getRate() {
         Map<String, String> model = new HashMap<>();
         model.put("rate", rate);
+        model.put("connstring", conn);
         return new ResponseEntity(model, HttpStatus.OK);
     }
 }
